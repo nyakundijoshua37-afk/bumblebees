@@ -13,7 +13,8 @@
                     colors: {
                         amberCustom: '#f59e0b',
                         greenCustom: '#166534',
-                        darkGreen: '#14532d'
+                        darkGreen: '#14532d',
+                        honeyLight: '#FFFDEB'
                     }
                 }
             }
@@ -38,138 +39,143 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-amber-50 to-white py-10 md:py-16 px-4">
-        <div class="max-w-4xl mx-auto text-center">
-            <span class="bg-emerald-100 text-emerald-800 text-xs md:text-sm font-semibold px-4 py-1.5 rounded-full inline-block mb-4 border border-emerald-200">
-                🌱 100% Farm Fresh & Purely Organic
-            </span>
-            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight mb-4">
-                Fresh <span class="text-emerald-700">Purely Organic Ratish</span> Around Campus
-            </h2>
-            <p class="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto mb-6">
-                Packed with nutrient-rich goodness. Special offer at only <strong class="text-amber-600 font-bold">150 KSh per Liter</strong>!
-            </p>
-            <div class="flex flex-wrap justify-center gap-3 text-sm font-medium text-gray-700 mb-4">
-                <span class="bg-white px-3 py-1 rounded-lg border border-gray-200 shadow-sm">🎓 Campus Delivery</span>
-                <span class="bg-white px-3 py-1 rounded-lg border border-gray-200 shadow-sm">📲 Paybill: 4008437 | Acc: 68551</span>
-                <span class="bg-white px-3 py-1 rounded-lg border border-gray-200 shadow-sm">💵 Pay on Delivery</span>
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto px-4 py-12">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            
+            <!-- Left Column: Visuals & Pitch -->
+            <div class="space-y-8">
+                <div class="border-4 border-amber-200 rounded-3xl p-3 bg-white shadow-2xl relative">
+                    <img src="ratish-drink.jpg" alt="Purely Organic Ratish Drink" class="w-full h-[400px] object-cover rounded-2xl shadow-inner">
+                    <span class="absolute top-6 right-6 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow">🌱 Pure</span>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-xl border border-amber-50">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs md:text-sm font-semibold px-4 py-1.5 rounded-full inline-block mb-4 border border-emerald-200">
+                        🌱 100% Farm Fresh & Purely Organic
+                    </span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 tracking-tight leading-tight mb-4">
+                        Discover Fresh <span class="text-emerald-700">Ratish Goodness</span> Around Karatina Main Campus
+                    </h2>
+                    <p class="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto mb-6">
+                        Loaded with vibrant nutrients. Special offer at just <strong class="text-amber-600 font-bold">150 KSh per Liter</strong>!
+                    </p>
+                    <div class="flex flex-wrap gap-3 text-sm font-medium text-gray-700">
+                        <span class="bg-honeyLight px-3 py-1 rounded-lg border border-gray-200 shadow-sm">🎓 Fast Off-Campus Delivery</span>
+                        <span class="bg-honeyLight px-3 py-1 rounded-lg border border-gray-200 shadow-sm">📲 Paybill: 852648 | Acc: 150499</span>
+                        <span class="bg-honeyLight px-3 py-1 rounded-lg border border-gray-200 shadow-sm">💵 Pay on Delivery</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Interactive Order Form -->
+            <div class="bg-white rounded-2xl shadow-2xl border-2 border-emerald-100 p-8 md:p-10 space-y-8">
+                <div>
+                    <h3 class="text-3xl font-extrabold text-gray-950 mb-2">Build Your Order</h3>
+                    <p class="text-gray-500 text-sm">Select quantity, pick your drop-off spot around Karatina Main Campus, and order instantly.</p>
+                </div>
+                
+                <form id="orderForm" onsubmit="handleOrder(event)" class="space-y-7">
+                    <!-- Liters Selector -->
+                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                        <label class="block text-sm font-semibold text-gray-700 mb-3">Select Quantity (Liters)</label>
+                        <div class="grid grid-cols-4 gap-2.5 mb-4">
+                            <button type="button" onclick="setLiters(1)" class="preset-btn bg-white border border-gray-300 rounded-xl py-2.5 text-sm font-bold hover:border-amber-500 hover:bg-amber-50 focus:ring-2 focus:ring-amber-500 transition">1 L</button>
+                            <button type="button" onclick="setLiters(2)" class="preset-btn bg-white border border-gray-300 rounded-xl py-2.5 text-sm font-bold hover:border-amber-500 hover:bg-amber-50 focus:ring-2 focus:ring-amber-500 transition">2 L</button>
+                            <button type="button" onclick="setLiters(3)" class="preset-btn bg-white border border-gray-300 rounded-xl py-2.5 text-sm font-bold hover:border-amber-500 hover:bg-amber-50 focus:ring-2 focus:ring-amber-500 transition">3 L</button>
+                            <button type="button" onclick="setLiters(5)" class="preset-btn bg-white border border-gray-300 rounded-xl py-2.5 text-sm font-bold hover:border-amber-500 hover:bg-amber-50 focus:ring-2 focus:ring-amber-500 transition">5 L</button>
+                        </div>
+                        <div class="relative">
+                            <input type="number" id="liters" min="1" value="1" oninput="calculateTotal()" class="w-full border border-gray-300 rounded-xl px-5 py-3.5 text-lg font-bold text-gray-950 focus:ring-2 focus:ring-amber-500 focus:outline-none placeholder:text-gray-400" placeholder="Custom liters...">
+                            <span class="absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 font-semibold">Liter(s)</span>
+                        </div>
+                    </div>
+
+                    <!-- Price Summary -->
+                    <div class="bg-amber-100/60 rounded-xl p-5 flex justify-between items-center border border-amber-200">
+                        <div>
+                            <p class="text-xs text-amber-900 uppercase font-bold tracking-wider">Total Price</p>
+                            <p class="text-xs text-gray-600">Rate: 150 KSh / Liter</p>
+                        </div>
+                        <div class="text-right">
+                            <span id="totalPrice" class="text-4xl font-extrabold text-amber-600">150</span>
+                            <span class="text-amber-600 font-bold">KSh</span>
+                        </div>
+                    </div>
+
+                    <!-- Campus Surroundings Location Selector -->
+                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
+                        <label class="block text-sm font-semibold text-gray-700 mb-3">Delivery Location (Around Karatina Main Campus)</label>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mb-4">
+                            <button type="button" onclick="setCampusLocation('Gate A / Main Gate Area')" class="campus-btn text-xs border border-gray-300 bg-white rounded-lg p-3 font-medium text-left hover:border-amber-500 hover:bg-amber-50 transition">🚪 Gate A Area</button>
+                            <button type="button" onclick="setCampusLocation('Gate B Area')" class="campus-btn text-xs border border-gray-300 bg-white rounded-lg p-3 font-medium text-left hover:border-amber-500 hover:bg-amber-50 transition">🚪 Gate B Area</button>
+                            <button type="button" onclick="setCampusLocation('Kagochi Shopping Center')" class="campus-btn text-xs border border-gray-300 bg-white rounded-lg p-3 font-medium text-left hover:border-amber-500 hover:bg-amber-50 transition">🏪 Kagochi Center</button>
+                            <button type="button" onclick="setCampusLocation('Off-Campus Hostels')" class="campus-btn text-xs border border-gray-300 bg-white rounded-lg p-3 font-medium text-left hover:border-amber-500 hover:bg-amber-50 transition">🏠 Off-Campus Hostels</button>
+                            <button type="button" onclick="setCampusLocation('Market Area / Stage')" class="campus-btn text-xs border border-gray-300 bg-white rounded-lg p-3 font-medium text-left hover:border-amber-500 hover:bg-amber-50 transition">🛍️ Market / Stage</button>
+                            <button type="button" onclick="setCampusLocation('Other Custom Area')" class="campus-btn text-xs border border-gray-300 bg-white rounded-lg p-3 font-medium text-left hover:border-amber-500 hover:bg-amber-50 transition">📍 Custom Location</button>
+                        </div>
+
+                        <div class="relative">
+                            <i class="fas fa-map-marker-alt absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                            <input type="text" id="location" required placeholder="Specify hostel name, room #, or landmark..." class="w-full border border-gray-300 rounded-xl pl-11 pr-5 py-3.5 text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-3">How Will You Pay?</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <label class="cursor-pointer border-2 border-gray-200 rounded-2xl p-5 flex items-start gap-3 relative payment-option has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50">
+                                <input type="radio" name="paymentMethod" value="Pay on Delivery" checked onclick="togglePaymentDetails('pod')" class="mt-1 text-amber-600 focus:ring-amber-500">
+                                <div>
+                                    <p class="font-bold text-gray-950 text-base">💵 Pay on Delivery</p>
+                                    <p class="text-xs text-gray-600">Pay M-Pesa or Cash upon drop-off</p>
+                                </div>
+                            </label>
+
+                            <label class="cursor-pointer border-2 border-gray-200 rounded-2xl p-5 flex items-start gap-3 relative payment-option has-[:checked]:border-amber-500 has-[:checked]:bg-amber-50/50">
+                                <input type="radio" name="paymentMethod" value="M-Pesa Paybill" onclick="togglePaymentDetails('paybill')" class="mt-1 text-amber-600 focus:ring-amber-500">
+                                <div>
+                                    <p class="font-bold text-gray-950 text-base">📲 M-Pesa Paybill</p>
+                                    <p class="text-xs text-gray-600">Pre-pay to Paybill 852648</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Dedicated Paybill Box -->
+                    <div id="paybillInfo" class="hidden bg-emerald-50 border border-emerald-200 rounded-xl p-5 text-sm text-emerald-950">
+                        <p class="font-bold text-base mb-2">📲 Instant M-Pesa Paybill Instructions:</p>
+                        <div class="bg-white p-4 rounded-xl border border-emerald-100 font-mono text-base space-y-1.5 mb-2.5">
+                            <p><strong>Business No (Paybill):</strong> <span class="text-emerald-700 font-extrabold">852648</span></p>
+                            <p><strong>Account No:</strong> <span class="text-emerald-700 font-extrabold">150499</span></p>
+                        </div>
+                        <p class="text-xs text-emerald-800">After payment, ensure you hit the <strong>Order via WhatsApp</strong> button to complete your booking!</p>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-3">
+                        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-7 rounded-2xl shadow-lg transition flex items-center justify-center gap-2.5 text-base">
+                            <i class="fab fa-whatsapp text-2xl"></i> Order via WhatsApp
+                        </button>
+                        <a href="tel:0799853923" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-4 px-7 rounded-2xl shadow-md transition flex items-center justify-center gap-2.5 text-base">
+                            <i class="fas fa-phone-alt text-lg"></i> Call 0799853923
+                        </a>
+                    </div>
+                </form>
             </div>
         </div>
-    </section>
-
-    <!-- Main Order & Payment Section -->
-    <section class="max-w-4xl mx-auto px-4 -mt-4 mb-16">
-        <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 md:p-8">
-            <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Place Your Order</h3>
-            
-            <form id="orderForm" onsubmit="handleOrder(event)" class="space-y-6">
-                <!-- Liters Selector -->
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Select Quantity (Liters)</label>
-                    <div class="grid grid-cols-4 gap-2 mb-3">
-                        <button type="button" onclick="setLiters(1)" class="preset-btn border border-gray-300 rounded-lg py-2 text-sm font-bold hover:border-amber-500 focus:outline-none">1 L</button>
-                        <button type="button" onclick="setLiters(2)" class="preset-btn border border-gray-300 rounded-lg py-2 text-sm font-bold hover:border-amber-500 focus:outline-none">2 L</button>
-                        <button type="button" onclick="setLiters(3)" class="preset-btn border border-gray-300 rounded-lg py-2 text-sm font-bold hover:border-amber-500 focus:outline-none">3 L</button>
-                        <button type="button" onclick="setLiters(5)" class="preset-btn border border-gray-300 rounded-lg py-2 text-sm font-bold hover:border-amber-500 focus:outline-none">5 L</button>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <input type="number" id="liters" min="1" value="1" oninput="calculateTotal()" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg font-bold text-gray-900 focus:ring-2 focus:ring-amber-500 focus:outline-none">
-                        <span class="text-gray-500 font-semibold text-lg">Liter(s)</span>
-                    </div>
-                </div>
-
-                <!-- Price Summary -->
-                <div class="bg-amber-50 rounded-xl p-4 flex justify-between items-center border border-amber-200">
-                    <div>
-                        <p class="text-xs text-amber-800 uppercase font-bold tracking-wider">Total Price</p>
-                        <p class="text-xs text-gray-500">Rate: 150 KSh / Liter</p>
-                    </div>
-                    <div class="text-right">
-                        <span id="totalPrice" class="text-3xl font-extrabold text-amber-600">150</span>
-                        <span class="text-amber-600 font-bold">KSh</span>
-                    </div>
-                </div>
-
-                <!-- Campus Delivery Location Selector -->
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Select Campus Delivery Location</label>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mb-3">
-                        <button type="button" onclick="setCampusLocation('Hostels / Halls of Residence')" class="campus-btn text-xs border border-gray-300 rounded-lg p-2.5 font-medium text-left hover:border-amber-500 hover:bg-amber-50 transition">
-                            🏠 Hostels / Halls
-                        </button>
-                        <button type="button" onclick="setCampusLocation('Main Tuition Complex')" class="campus-btn text-xs border border-gray-300 rounded-lg p-2.5 font-medium text-left hover:border-amber-500 hover:bg-amber-50 transition">
-                            📚 Tuition Complex
-                        </button>
-                        <button type="button" onclick="setCampusLocation('Library Area')" class="campus-btn text-xs border border-gray-300 rounded-lg p-2.5 font-medium text-left hover:border-amber-500 hover:bg-amber-50 transition">
-                            📖 University Library
-                        </button>
-                        <button type="button" onclick="setCampusLocation('Administration Block')" class="campus-btn text-xs border border-gray-300 rounded-lg p-2.5 font-medium text-left hover:border-amber-500 hover:bg-amber-50 transition">
-                            🏛️ Admin Block
-                        </button>
-                        <button type="button" onclick="setCampusLocation('School Gate / Entrance')" class="campus-btn text-xs border border-gray-300 rounded-lg p-2.5 font-medium text-left hover:border-amber-500 hover:bg-amber-50 transition">
-                            🚪 Main Gate
-                        </button>
-                        <button type="button" onclick="setCampusLocation('Other Custom Area')" class="campus-btn text-xs border border-gray-300 rounded-lg p-2.5 font-medium text-left hover:border-amber-500 hover:bg-amber-50 transition">
-                            📍 Other Custom Spot
-                        </button>
-                    </div>
-
-                    <input type="text" id="location" required placeholder="e.g., Hostels Room 42, or specific building name..." class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-amber-500 focus:outline-none">
-                </div>
-
-                <!-- Payment Method Choice -->
-                <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-2">Select Preferred Payment Method</label>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <label class="cursor-pointer border-2 border-amber-500 bg-amber-50/40 rounded-xl p-4 flex items-center gap-3 relative payment-option">
-                            <input type="radio" name="paymentMethod" value="Pay on Delivery" checked onclick="togglePaymentDetails('pod')" class="text-amber-600 focus:ring-amber-500">
-                            <div>
-                                <p class="font-bold text-gray-900 text-sm">💵 Pay on Delivery</p>
-                                <p class="text-xs text-gray-500">Pay via M-Pesa or Cash upon drop-off</p>
-                            </div>
-                        </label>
-
-                        <label class="cursor-pointer border-2 border-gray-200 rounded-xl p-4 flex items-center gap-3 relative payment-option">
-                            <input type="radio" name="paymentMethod" value="M-Pesa Paybill" onclick="togglePaymentDetails('paybill')" class="text-amber-600 focus:ring-amber-500">
-                            <div>
-                                <p class="font-bold text-gray-900 text-sm">📲 M-Pesa Paybill</p>
-                                <p class="text-xs text-gray-500">Pre-pay to Paybill 4008437</p>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Dedicated Paybill Box -->
-                <div id="paybillInfo" class="hidden bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-sm text-emerald-900">
-                    <p class="font-bold text-base mb-2">📲 M-Pesa Paybill Instructions:</p>
-                    <div class="bg-white p-3 rounded-lg border border-emerald-100 font-mono text-sm space-y-1 mb-2">
-                        <p><strong>Business No (Paybill):</strong> <span class="text-emerald-700 font-bold">4008437</span></p>
-                        <p><strong>Account No:</strong> <span class="text-emerald-700 font-bold">68551</span></p>
-                    </div>
-                    <p class="text-xs text-emerald-800">After completing payment on M-Pesa, hit the <strong>Order via WhatsApp</strong> button below to send your location and order details!</p>
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
-                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-base">
-                        <i class="fab fa-whatsapp text-xl"></i> Order via WhatsApp
-                    </button>
-                    <a href="tel:0799853923" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3.5 px-6 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-base">
-                        <i class="fas fa-phone-alt text-lg"></i> Call 0799853923
-                    </a>
-                </div>
-            </form>
-        </div>
-    </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-8 px-4 text-center text-sm border-t border-gray-800">
-        <p class="font-semibold text-white mb-1">Bumble Bee Fruits & Drinks</p>
-        <p class="mb-2">Purely Organic Ratish • 150 KSh per Liter</p>
-        <p class="text-xs text-emerald-400 mb-1">Paybill: <strong>4008437</strong> | Account: <strong>68551</strong></p>
-        <p class="text-xs text-gray-500">Call / WhatsApp: 0799853923 | Fast Campus Delivery</p>
+    <footer class="bg-gray-950 text-gray-300 py-10 px-4 mt-16 text-center text-sm border-t border-gray-800">
+        <div class="max-w-4xl mx-auto space-y-3">
+            <p class="font-semibold text-white mb-1">Bumble Bee Fruits & Drinks</p>
+            <p class="mb-2">Purely Organic Ratish • 150 KSh per Liter</p>
+            <p class="text-xs text-emerald-400 font-medium">Paybill: <strong>852648</strong> | Account: <strong>150499</strong></p>
+            <p class="text-xs text-gray-500">Call / WhatsApp: 0799853923 | Fast Delivery Around Karatina Main Campus</p>
+        </div>
     </footer>
 
     <script>
@@ -189,7 +195,7 @@
             if (spot === 'Other Custom Area') {
                 locationInput.value = '';
                 locationInput.focus();
-                locationInput.placeholder = 'Type your specific campus location or room...';
+                locationInput.placeholder = 'Type specific hostel name, room #, or landmark...';
             } else {
                 locationInput.value = spot + ' - ';
                 locationInput.focus();
@@ -210,4 +216,18 @@
             const liters = document.getElementById('liters').value;
             const total = liters * 150;
             const location = document.getElementById('location').value;
-            const paymentMethod = document.querySelector('input[name="
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+
+            let text = `Hello Bumble Bee Fruits & Drinks! 🐝%0A%0A*New Order (Karatina Campus Area):*%0A- *Item:* Purely Organic Ratish%0A- *Quantity:* ${liters} Liter(s)%0A- *Total:* ${total} KSh%0A- *Delivery Location:* ${location}%0A- *Payment Method:* ${paymentMethod}`;
+            
+            if (paymentMethod === 'M-Pesa Paybill') {
+                text += `%0A- *Paybill No:* 852648%0A- *Account No:* 150499`;
+            }
+
+            text += `%0A%0APlease process and deliver my order!`;
+
+            window.open(`https://wa.me/254799853923?text=${text}`, '_blank');
+        }
+    </script>
+</body>
+</html>
